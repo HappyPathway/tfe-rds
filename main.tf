@@ -1,5 +1,8 @@
 //--------------------------------------------------------------------
 // Modules
+variable "username" {}
+variable "password" {}
+
 module "rds" {
   source  = "app.terraform.io/AWSDemoDarnoldTFE/rds/aws"
   version = "1.0.0"
