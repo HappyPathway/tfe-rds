@@ -3,6 +3,13 @@
 variable "username" {}
 variable "password" {}
 
+data "terraform_remote_state" "vpc" {
+  backend = "atlas"
+  config {
+    name = "AWSDemoDarnoldTFE/Network"
+  }
+}
+
 module "rds" {
   source  = "app.terraform.io/AWSDemoDarnoldTFE/rds/aws"
   version = "1.0.0"
@@ -21,4 +28,7 @@ module "rds" {
   password = "${var.password}"
   port = 5432
   username = "${var.username}"
+  publicly_accessible = true
+  family = "tfe"
+  subnet_ids = "${data.terraform_remote_state.vpc.private_subnets}"
 }
