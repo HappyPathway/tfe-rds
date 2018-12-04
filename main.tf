@@ -9,10 +9,10 @@ module "rds" {
 
   allocated_storage = 20
   backup_window = "09:46-10:16"
-  create_db_instance = "true"
-  create_db_option_group = "true"
-  create_db_parameter_group = "true"
-  create_db_subnet_group = "true"
+  create_db_instance = true
+  create_db_option_group = true
+  create_db_parameter_group = true
+  create_db_subnet_group = true
   engine = "postgres9.6"
   engine_version = "9.6.3"
   identifier = "tfe"
